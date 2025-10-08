@@ -1,0 +1,5 @@
+solutions.py
+*pycache*
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
