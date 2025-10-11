@@ -24,12 +24,12 @@ def count_mentions(some_colour_word: str):
     counter = 0
     
     with open("./data/colours_20_simple.csv", mode="r") as colour_list:
+        next(colour_list)  # Skip the header row
         for english in csv.reader(colour_list):
-            if some_colour_word in english[2].lower():
-                counter = counter + 1
+            if some_colour_word.lower() in english[2].lower():
+                counter += 1
 
     return counter
-
 
 
 
@@ -53,13 +53,15 @@ def generate_coloured_text(colour_name: str):
     value of '<p style="color:#e32636;">Alizarin Crimson</p>'
     """
 
+    # READ PLAY.PY FOR EXAMPLES OF HOW TO DO THIS - KAYCEE AND REECE'S WAYS
+
     chosen_colour = []
     
     with open("./data/colours_865.csv", mode="r") as text_colours:
         reader = csv.DictReader(text_colours)
-        for colours in reader:
-            if colours["English"] == colour_name:
-                chosen_colour.append(colours)
+        for row in reader:
+            if row["English"] == colour_name:
+                chosen_colour.append(row)
 
     if chosen_colour:
         HEX = chosen_colour[0]["HEX"]
@@ -104,7 +106,7 @@ def galactic_speed_percentile(galactic_speed: float):
         for galaxies in reader:
             total_rows += 1
             if int(galaxies[1]) > galactic_speed:
-                counter += 1
+                counter += 1 #shorter way of writing counter = counter + 1
 
     total = counter/total_rows * 100
     return total

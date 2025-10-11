@@ -3,3 +3,4 @@ solutions.py
 .vscode/
 !.vscode/extensions.json
 !.vscode/settings.json
+.DS_Store
